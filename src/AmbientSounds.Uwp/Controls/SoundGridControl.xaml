@@ -41,7 +41,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <StackPanel>
-            <cpt:CopilotTextBox MessageReceived="CopilotTextBox_MessageReceived" SecretKey="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">
+            <cpt:CopilotTextBox Margin="0,16,0,36" MaxWidth="460" MessageReceived="CopilotTextBox_MessageReceived">
                 <cpt:CopilotTextBox.Prefix>
                     <x:String>
                         Here's a list of words: underwater, city street, white noise, rainforest, coffee shop, birds, beach, rain, thunder, waterfall, wind, creek, fireplace.
