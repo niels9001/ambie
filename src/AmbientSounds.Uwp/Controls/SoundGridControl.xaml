@@ -2,6 +2,7 @@
     x:Class="AmbientSounds.Controls.SoundGridControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cpt="using:CopilotToolkit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
@@ -39,23 +40,39 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <StackPanel>
+            <cpt:CopilotTextBox MessageReceived="CopilotTextBox_MessageReceived" SecretKey="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">
+                <cpt:CopilotTextBox.Prefix>
+                    <x:String>
+                        Here's a list of words: underwater, city street, white noise, rainforest, coffee shop, birds, beach, rain, thunder, waterfall, wind, creek, fireplace.
+                        Return 3 words from this list that best describe the following sentence:
+                        =======================
+                    </x:String>
+                </cpt:CopilotTextBox.Prefix>
+                <cpt:CopilotTextBox.Suffix>
+                    <x:String>
+                        =======================
+                        Rank the selected words and rank them from 0 to 10. Use this format: word-ranking. comma seperated.
+                    </x:String>
+                </cpt:CopilotTextBox.Suffix>
+            </cpt:CopilotTextBox>
 
-        <GridView
-            x:Name="MainGridView"
-            AllowDrop="True"
-            CanDragItems="True"
-            CanReorderItems="True"
-            ItemContainerStyle="{StaticResource RegularItemContainerStyle}"
-            ItemTemplate="{x:Bind ItemTemplate, Mode=OneWay}"
-            ItemsSource="{x:Bind ViewModel.Sounds}"
-            SelectionMode="None">
-            <GridView.ItemContainerTransitions>
-                <TransitionCollection>
-                    <EntranceThemeTransition IsStaggeringEnabled="True" />
-                </TransitionCollection>
-            </GridView.ItemContainerTransitions>
-        </GridView>
-
+            <GridView
+                x:Name="MainGridView"
+                AllowDrop="True"
+                CanDragItems="True"
+                CanReorderItems="True"
+                ItemContainerStyle="{StaticResource RegularItemContainerStyle}"
+                ItemTemplate="{x:Bind ItemTemplate, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.Sounds}"
+                SelectionMode="None">
+                <GridView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition IsStaggeringEnabled="True" />
+                    </TransitionCollection>
+                </GridView.ItemContainerTransitions>
+            </GridView>
+        </StackPanel>
         <StackPanel
             VerticalAlignment="Center"
             Spacing="12"

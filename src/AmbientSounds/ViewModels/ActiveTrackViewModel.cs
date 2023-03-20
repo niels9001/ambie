@@ -49,6 +49,7 @@ public class ActiveTrackViewModel : ObservableObject
         {
             _player.SetVolume(Sound.Id, value / 100d);
             _userSettings.Set($"{Sound.Id}:volume", value);
+        
         }
     }
 

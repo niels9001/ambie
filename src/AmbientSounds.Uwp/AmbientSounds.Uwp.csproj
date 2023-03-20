@@ -729,6 +729,10 @@
     <Content Include="Assets\Data.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\CopilotToolkit\CopilotToolkit.csproj">
+      <Project>{7b247232-0d7c-417e-bbf8-a8077db311cc}</Project>
+      <Name>CopilotToolkit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AmbientSounds\AmbientSounds.csproj">
       <Project>{e8943da1-afdd-4c4b-a216-05af46142cab}</Project>
       <Name>AmbientSounds</Name>
@@ -853,6 +857,9 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\ar\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
