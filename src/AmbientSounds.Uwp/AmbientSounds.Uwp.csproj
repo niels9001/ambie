@@ -729,6 +729,10 @@
     <Content Include="Assets\Data.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\RogerRoger\RogerApi\RogerApi.csproj">
+      <Project>{c79cd66c-0804-477d-8462-88bffd99339b}</Project>
+      <Name>RogerApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AmbientSounds\AmbientSounds.csproj">
       <Project>{e8943da1-afdd-4c4b-a216-05af46142cab}</Project>
       <Name>AmbientSounds</Name>

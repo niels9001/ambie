@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AmbientSounds.Services;
+using AmbientSounds.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +28,6 @@ namespace AmbientSounds.Views
         public HomePage()
         {
             this.InitializeComponent();
-        }
+        }   
     }
 }

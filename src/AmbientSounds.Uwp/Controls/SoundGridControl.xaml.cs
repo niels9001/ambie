@@ -1,5 +1,8 @@
 ﻿using AmbientSounds.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Text;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -43,5 +46,6 @@ namespace AmbientSounds.Controls
             get => (bool)GetValue(IsCompactProperty);
             set => SetValue(IsCompactProperty, value);
         }
+
     }
 }
