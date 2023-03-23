@@ -34,9 +34,6 @@ namespace AmbientSounds.Controls
             this.Loaded += async (_, _) => { await ViewModel.LoadCommand.ExecuteAsync(null); };
             this.Unloaded += (_, _) => { ViewModel.Dispose(); };
             ConnectToRoger();
-
-            System.Diagnostics.Debug.WriteLine(GetSoundtracksNames());
-            PlaySoundtracks("beach;underwater;rain");
         }
 
         public SoundListViewModel ViewModel => (SoundListViewModel)this.DataContext;
@@ -116,7 +113,7 @@ namespace AmbientSounds.Controls
 
             foreach (SoundViewModel s in ViewModel.Sounds)
             {
-                if (selectedThemes.Contains(s.Name))
+                if (selectedThemes.Contains(s.Name.ToLower()))
                 {
                     s.PlayCommand.Execute(null);
                 }
@@ -128,10 +125,16 @@ namespace AmbientSounds.Controls
             StringBuilder b = new StringBuilder();
             foreach (SoundViewModel s in ViewModel.Sounds)
             { 
-                b.Append(s.Name);
+                b.Append(s.Name.ToLower());
                 b.Append(";");
             }
             return b.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(GetSoundtracksNames());
+            PlaySoundtracks("beach;underwater;rain");
         }
     }
 }

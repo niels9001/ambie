@@ -55,7 +55,7 @@
                 </TransitionCollection>
             </GridView.ItemContainerTransitions>
         </GridView>
-
+        <Button Content="Play sounds" Click="Button_Click"/>
         <StackPanel
             VerticalAlignment="Center"
             Spacing="12"
