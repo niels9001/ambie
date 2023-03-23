@@ -35,8 +35,6 @@ public sealed partial class ShellPage : Page
             // Ref: https://docs.microsoft.com/en-us/windows/uwp/xbox-apps/turn-off-overscan
             ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
         }
-
-        ConnectToRoger();
     }
 
     public ShellPageViewModel ViewModel => (ShellPageViewModel)this.DataContext;
@@ -132,53 +130,5 @@ public sealed partial class ShellPage : Page
                 await ShowTimeBannerAnimations.StartAsync();
             }
         }
-    }
-
-
-    private void ConnectToRoger()
-    {
-        RogerApi.Api.OnCommandRequestReceived += Api_OnCommandRequestReceived;
-
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        RogerApi.Api.Connect(new RogerApi.AppDescription()
-        {
-            Name = "Ambie",
-            Description = "Ambie is a sound editor text editor",
-            Commands = new RogerApi.AppCommand[]
-            {
-                    new RogerApi.AppCommand()
-                    {
-                        Name = "getListOfSoundNames",
-                        Description = "this will return a list of sound names"
-                    }
-}
-        });
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-
-    }
-
-    private async void Api_OnCommandRequestReceived(object sender, RogerApi.CommandEventArgs e)
-    {
-        StringBuilder b = new StringBuilder();
-        string ListOfSounds = b.ToString();
-        //foreach (var i in ViewModel.Sounds)
-        //{
-        //    b.Append(i.Name);
-        //}
-        e.ReturnValue = Task<string>.Run(async () =>
-        {
-            string response = "";
-            switch (e.CommandName)
-            {
-                case "getListOfSoundNames":
-                    await this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                    {
-                        response = "dog.wav; cat.wav; dog.wav; cat.wav; dog.wav; cat.wav";
-                    });
-                    break;
-            }
-            return response;
-        }).AsAsyncOperation<string>();
-
     }
 }
